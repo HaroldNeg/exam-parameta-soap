@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="11c0cefa-4365-4405-be90-fefa9b1fda3a" activeEnvironment="Default" name="employee" soapui-version="5.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="46a09aa9-e82c-432c-972b-24b610eca68c" wsaVersion="NONE" name="employeePortSoap11" type="wsdl" bindingName="{http://soapexam.com/parameta}employeePortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8081/ws/employee.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8081/ws/employee.wsdl"><con:part><con:url>http://localhost:8081/ws/employee.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://soapexam.com/parameta" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://negreteharold.com/exam/parameta" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soapexam.com/parameta">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://negreteharold.com/exam/parameta" xmlns:tns="http://negreteharold.com/exam/parameta" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="saveEmployeeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="employee" type="tns:employee"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="saveEmployeeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="response" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="employee">
+        <xs:sequence>
+          <xs:element name="names" type="xs:string"/>
+          <xs:element name="surnames" type="xs:string"/>
+          <xs:element name="documentType" type="xs:string"/>
+          <xs:element name="documentNumber" type="xs:string"/>
+          <xs:element name="birthDate" type="xs:date"/>
+          <xs:element name="linkingCompanyDate" type="xs:date"/>
+          <xs:element name="positionCompany" type="xs:string"/>
+          <xs:element name="salary" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="saveEmployeeRequest">
+    <wsdl:part element="sch:saveEmployeeRequest" name="saveEmployeeRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveEmployeeResponse">
+    <wsdl:part element="sch:saveEmployeeResponse" name="saveEmployeeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="employeePort">
+    <wsdl:operation name="saveEmployee">
+      <wsdl:input message="tns:saveEmployeeRequest" name="saveEmployeeRequest"></wsdl:input>
+      <wsdl:output message="tns:saveEmployeeResponse" name="saveEmployeeResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="employeePortSoap11" type="tns:employeePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="saveEmployee">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="saveEmployeeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveEmployeeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="employeePortService">
+    <wsdl:port binding="tns:employeePortSoap11" name="employeePortSoap11">
+      <soap:address location="http://localhost:8081/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8081/ws</con:endpoint></con:endpoints><con:operation id="cd4a5514-d198-4e41-bb18-d6f088db126e" isOneWay="false" action="" name="saveEmployee" bindingOperationName="saveEmployee" type="Request-Response" outputName="saveEmployeeResponse" inputName="saveEmployeeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5256065f-850d-44b7-abfa-cacbcb9da31c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:par="http://negreteharold.com/exam/parameta">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <par:saveEmployeeRequest>\r
+         <par:employee>\r
+            <par:names>Harold Fernando</par:names>\r
+            <par:surnames>Negrete Pinilla</par:surnames>\r
+            <par:documentType>CC</par:documentType>\r
+            <par:documentNumber>1070613632</par:documentNumber>\r
+            <par:birthDate>1994-07-01</par:birthDate>\r
+            <par:linkingCompanyDate>2020-09-01</par:linkingCompanyDate>\r
+            <par:positionCompany>Developer Java</par:positionCompany>\r
+            <par:salary>3000000.0</par:salary>\r
+         </par:employee>\r
+      </par:saveEmployeeRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soapexam.com/parameta/employeePort/saveEmployeeRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
