@@ -1,0 +1,35 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://negreteharold.com/exam/parameta"
+	targetNamespace="http://negreteharold.com/exam/parameta"
+	elementFormDefault="qualified">
+
+	<xs:element name="saveEmployeeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="employee" type="tns:employee"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="saveEmployeeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="employee">
+		<xs:sequence>
+			<xs:element name="names" type="xs:string"/>
+			<xs:element name="surnames" type="xs:string"/>
+			<xs:element name="documentType" type="xs:string"/>
+			<xs:element name="documentNumber" type="xs:string"/>
+			<xs:element name="birthDate" type="xs:date"/>
+			<xs:element name="linkingCompanyDate" type="xs:date"/>
+			<xs:element name="positionCompany" type="xs:string"/>
+			<xs:element name="salary" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>
